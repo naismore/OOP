@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\anxismore\CLionProjects\multmatrix\cmake-build-debug-visual-studio\CMakeFiles\dab73c4af0cbf8617dc0597c2278fd08\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{DD35E384-113E-3682-A07F-2B8CE8BB99D6}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
