@@ -2,10 +2,10 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\Users\anxismore\CLionProjects\multmatrix\cmake-build-debug-visual-studio\x64\Debug\ZERO_CHECK</FullPath>
+      <FullPath>D:\PROJECTS\OOP\multmatrix\cmake-build-debug-visual-studio\x64\Debug\ZERO_CHECK</FullPath>
     </ProjectOutput>
     <ProjectOutput>
-      <FullPath>C:\Users\anxismore\CLionProjects\multmatrix\cmake-build-debug-visual-studio\Debug\multmatrix.exe</FullPath>
+      <FullPath>D:\PROJECTS\OOP\multmatrix\cmake-build-debug-visual-studio\Debug\multmatrix.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

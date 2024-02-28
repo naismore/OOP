@@ -6,20 +6,20 @@ string RemoveExtraSpaces(std::string const& arg)
 {
     bool space_sleep = true;
     string resultString;
-    for (int i = 0; i < arg.length(); i++)
+    for (char i : arg)
     {
-        if(arg[i] == ' ' && space_sleep == true)
+        if(i == ' ' && space_sleep)
         {
             continue;
         }
-        if(arg[i] == ' ' && space_sleep == false)
+        if(i == ' ')
         {
-            resultString.push_back(arg[i]);
+            resultString.push_back(i);
             space_sleep = true;
         }
         else
         {
-            resultString.push_back(arg[i]);
+            resultString.push_back(i);
             space_sleep = false;
         }
     }

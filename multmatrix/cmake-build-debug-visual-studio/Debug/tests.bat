@@ -1,3 +1,4 @@
+@echo off
 set PROGRAM=multmatrix.exe
 
 %PROGRAM% matrix1.txt empty.txt
