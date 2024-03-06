@@ -1,5 +1,15 @@
 # ninja log v5
-1	1923	7308330792262061	CMakeFiles/multmatrix.dir/main.cpp.obj	77a6584f7f762dfd
-1939	2797	7308330800632743	multmatrix.exe	2fc240f2ba201d1c
-24	2998	7308333362941265	CMakeFiles/multmatrix.dir/main.cpp.obj	77a6584f7f762dfd
-2999	3723	7308333369621833	multmatrix.exe	2fc240f2ba201d1c
+4	808	7308739303794382	CMakeFiles/multmatrix.dir/main.cpp.obj	77a6584f7f762dfd
+809	1077	7308739306412783	multmatrix.exe	2fc240f2ba201d1c
+9	1698	7308997613950845	CMakeFiles/multmatrix.dir/main.cpp.obj	77a6584f7f762dfd
+1699	2208	7308997618981463	multmatrix.exe	2fc240f2ba201d1c
+5	811	7308997841987557	CMakeFiles/multmatrix.dir/main.cpp.obj	77a6584f7f762dfd
+811	1045	7308997844267726	multmatrix.exe	2fc240f2ba201d1c
+5	802	7308998555580560	CMakeFiles/multmatrix.dir/main.cpp.obj	77a6584f7f762dfd
+803	1022	7308998557680853	multmatrix.exe	2fc240f2ba201d1c
+4	835	7308999615697253	CMakeFiles/multmatrix.dir/main.cpp.obj	77a6584f7f762dfd
+835	1026	7308999617533632	multmatrix.exe	2fc240f2ba201d1c
+6	863	7308999910873665	CMakeFiles/multmatrix.dir/main.cpp.obj	77a6584f7f762dfd
+864	1049	7308999912679703	multmatrix.exe	2fc240f2ba201d1c
+6	1091	7309000401492459	CMakeFiles/multmatrix.dir/main.cpp.obj	77a6584f7f762dfd
+1091	1292	7309000403432629	multmatrix.exe	2fc240f2ba201d1c
