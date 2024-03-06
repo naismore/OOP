@@ -26,8 +26,15 @@ string RemoveExtraSpaces(std::string const& arg)
     return resultString;
 }
 
-int main()
+int main(int argc, char* args[])
 {
-    std::cout << "Hello World!\n";
+    if (argc != 2)
+    {
+        cout << "Usage removeextraspaces.exe <string>\n";
+        return 1;
+    }
+
+    cout << "Введеная строка: " << args[1] << endl;
+    cout << "Обработанная строка: " << RemoveExtraSpaces(args[1]) << endl;
 }
 
