@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -28,13 +29,12 @@ string RemoveExtraSpaces(std::string const& arg)
 
 int main(int argc, char* args[])
 {
-    if (argc != 2)
-    {
-        cout << "Usage removeextraspaces.exe <string>\n";
-        return 1;
-    }
+    string temp;
 
-    cout << "Введеная строка: " << args[1] << endl;
-    cout << "Обработанная строка: " << RemoveExtraSpaces(args[1]) << endl;
+    cout << "Введите строку: ";
+    getline(cin, temp);
+
+    cout << "Введеная строка: " << temp << endl;
+    cout << "Обработанная строка: " << RemoveExtraSpaces(temp) << endl;
 }
 
