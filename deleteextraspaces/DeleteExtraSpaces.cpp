@@ -27,7 +27,7 @@ string RemoveExtraSpaces(std::string const& arg)
     return resultString;
 }
 
-int main(int argc, char* args[])
+int main()
 {
     string temp;
 
