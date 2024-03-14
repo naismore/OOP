@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{705b19b1-29e4-485e-91d7-13511d7005a9}</ProjectGuid>
-    <RootNamespace>DeleteExtraSpaces</RootNamespace>
+    <ProjectGuid>{461e6e12-c20b-484b-9be0-590208074de6}</ProjectGuid>
+    <RootNamespace>DeleteExtraSpacestests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,12 +128,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="DeleteExtraSpaces.cpp" />
-    <ClCompile Include="RES.cpp" />
+    <ClCompile Include="..\DeleteExtraSpaces\RES.cpp" />
+    <ClCompile Include="DeleteExtraSpaces_tests.cpp" />
+    <ClCompile Include="tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DeleteExtraSpaces.h" />
-    <ClInclude Include="RES.h" />
+    <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\DeleteExtraSpaces\RES.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

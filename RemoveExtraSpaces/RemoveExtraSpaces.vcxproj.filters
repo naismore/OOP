@@ -15,18 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DeleteExtraSpaces.cpp">
+    <ClCompile Include="RemoveExtraSpaces.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="RES.cpp">
+    <ClCompile Include="DeleteExtraSpaces.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DeleteExtraSpaces.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="RES.h">
+    <ClInclude Include="RemoveExtraSpaces.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
