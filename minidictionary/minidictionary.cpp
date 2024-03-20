@@ -1,4 +1,5 @@
 ﻿#include <iostream>
+#include <Windows.h>
 #include <vector>
 #include <map>
 #include <string>
@@ -7,9 +8,14 @@
 
 using namespace std;
 
+map<string, string> dictionary;
+map<string, string> addingTranslations;
+
 bool SaveDictionaryToFile(const string& path)
 {
-	ofstream out(path);
+	ofstream out;
+
+	out.open(path, ios::app);
 
 	if (!out.is_open())
 	{
@@ -48,12 +54,11 @@ bool OpenFile(const string& path)
 	return true;
 }
 
-map<string, string> dictionary;
-map<string, string> addingTranslations;
-
-int Main(int argc, char* args[])
+int main(int argc, char* args[])
 {
-
+	setlocale(LC_ALL, "");
+	SetConsoleOutputCP(CP_UTF8);
+	
 	if (argc != 2)
 	{
 		cout << "Usage minidictionary.exe <dict file>\n";
@@ -67,13 +72,18 @@ int Main(int argc, char* args[])
 	}
 
 	string inputWord;
-	while (inputWord != "...")
+	bool working = true;
+	while (true)
 	{
 		cin >> inputWord;
+		if (inputWord == "...")
+		{
+			break;
+		}
 
 		if (dictionary.count(inputWord) != 0)
 		{
-			cout << "Слово: " << inputWord << ". Перевод: " << dictionary[inputWord] << endl;
+			cout << "Слово: " << inputWord << ". Перевод: " << dictionary.find(inputWord)->second << endl;
 		}
 		else
 		{
@@ -88,19 +98,25 @@ int Main(int argc, char* args[])
 		}
 	}
 
-	string action;
-	cout << "Сохранить изменения в словаре?(y/n): ";
-	cin >> action;
-
-	if (action == "y")
+	if (!addingTranslations.empty())
 	{
-		if (!SaveDictionaryToFile(args[1]))
-		{
-			cout << "Error to save dictionary\n";
-			return 1;
-		}
+		string action;
+		cout << "Сохранить изменения в словаре?(y/n): ";
+		cin >> action;
 
-		cout << "Изменения сохранены. До свидания.\n";
+		if (action == "y")
+		{
+			if (!SaveDictionaryToFile(args[1]))
+			{
+				cout << "Error to save dictionary\n";
+				return 1;
+			}
+
+			cout << "Изменения сохранены. До свидания.\n";
+			return 0;
+		}
 	}
+	
+	cout << "До свидания.\n";
 	return 0;
 }
