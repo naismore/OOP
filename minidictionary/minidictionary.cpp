@@ -10,6 +10,23 @@ using namespace std;
 
 map<string, string> dictionary;
 map<string, string> addingTranslations;
+map<string, string> reverseTranslation;
+
+
+
+bool AddTranslation(const string& inputWord, const string& inputTranslation)
+{
+	try
+	{
+		dictionary[inputWord] = inputTranslation;
+		addingTranslations[inputWord] = inputTranslation;
+		return false;
+	}
+	catch (...)
+	{
+		return true;
+	}
+}
 
 bool SaveDictionaryToFile(const string& path)
 {
@@ -49,6 +66,7 @@ bool OpenFile(const string& path)
 
 			iss >> word >> translation;
 			dictionary[word] = translation;
+			reverseTranslation[translation] = word;
 		}
 	}
 	return true;
@@ -80,10 +98,9 @@ int main(int argc, char* args[])
 		{
 			break;
 		}
-
-		if (dictionary.count(inputWord) != 0)
+		if (SearchTranslation(inputWord) != "Undefined")
 		{
-			cout << "Слово: " << inputWord << ". Перевод: " << dictionary.find(inputWord)->second << endl;
+			cout << "Word: " << inputWord << " Translation: " << SearchTranslation(inputWord) << endl;
 		}
 		else
 		{
@@ -92,8 +109,15 @@ int main(int argc, char* args[])
 			cin >> inputTranslation;
 			if (!inputTranslation.empty())
 			{
-				dictionary[inputWord] = inputTranslation;
-				addingTranslations[inputWord] = inputTranslation;
+				if (AddTranslation(inputWord, inputTranslation))
+				{
+					cout << "Translation " << inputTranslation << " to word " << inputWord << " was successfully saved!";
+				}
+				else
+				{
+					cout << "Error to save translation into dictionary!\n";
+					return 0;
+				}
 			}
 		}
 	}
