@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{379919e5-6945-4919-82f8-b93d0fdaaecb}</ProjectGuid>
-    <RootNamespace>minidictionary</RootNamespace>
+    <ProjectGuid>{a606b428-cd9f-4238-8f82-163e3bfb693c}</ProjectGuid>
+    <RootNamespace>TV</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,11 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="minidictionary.cpp" />
-    <ClCompile Include="SearchTranslation.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="SearchTranslation.h" />
+    <ClCompile Include="TV.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
