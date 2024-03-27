@@ -1,6 +1,5 @@
 ﻿#include <iostream>
 #include <Windows.h>
-#include <vector>
 #include <map>
 #include <string>
 #include <sstream>
@@ -12,7 +11,23 @@ map<string, string> dictionary;
 map<string, string> addingTranslations;
 map<string, string> reverseTranslation;
 
-
+string SearchTranslation(const string& word)
+{
+	string translation = "Undefined";
+	try
+	{
+		translation = dictionary[word];
+		if (translation == "Undefined")
+		{
+			translation = reverseTranslation[word];
+		}
+		return translation;
+	}
+	catch (...)
+	{
+		return "Error";
+	}
+}
 
 bool AddTranslation(const string& inputWord, const string& inputTranslation)
 {
@@ -100,6 +115,11 @@ int main(int argc, char* args[])
 		}
 		if (SearchTranslation(inputWord) != "Undefined")
 		{
+			if (SearchTranslation(inputWord) == "Error")
+			{
+				cout << "Error to search translation\n";
+				return 1;
+			}
 			cout << "Word: " << inputWord << " Translation: " << SearchTranslation(inputWord) << endl;
 		}
 		else
@@ -116,7 +136,7 @@ int main(int argc, char* args[])
 				else
 				{
 					cout << "Error to save translation into dictionary!\n";
-					return 0;
+					return 1;
 				}
 			}
 		}
