@@ -1,6 +1,5 @@
 #include "CTVSet.h"
 #include <iostream>
-#include <format>
 
 CTVSet::CTVSet()
 {
@@ -11,7 +10,7 @@ CTVSet::CTVSet()
 
 std::string CTVSet::Info()
 {
-	return (p_condition) ? std::format("TV is on. Channel {}", p_channelNumber);
+	return (p_condition) ? "TV is on. Channel: " + std::to_string(p_channelNumber) + '\n' : "TV is off\n";
 }
 
 void CTVSet::TurnOn()
