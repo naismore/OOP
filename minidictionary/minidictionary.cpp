@@ -1,96 +1,21 @@
 ﻿#include <iostream>
-#include <Windows.h>
 #include <map>
+#include "SearchTranslation.h"
+#include "AddTranslation.h"
+#include "OpenDictionaryFile.h"
+#include "SaveDictionaryToFile.h"
 #include <string>
-#include <sstream>
-#include <fstream>
+#include <consoleapi2.h>
+#include <WinNls.h>
 
 using namespace std;
-
-map<string, string> dictionary;
-map<string, string> addingTranslations;
-map<string, string> reverseTranslation;
-
-string SearchTranslation(const string& word)
-{
-	string translation = "Undefined";
-	try
-	{
-		translation = dictionary[word];
-		if (translation == "Undefined")
-		{
-			translation = reverseTranslation[word];
-		}
-		return translation;
-	}
-	catch (...)
-	{
-		return "Error";
-	}
-}
-
-bool AddTranslation(const string& inputWord, const string& inputTranslation)
-{
-	try
-	{
-		dictionary[inputWord] = inputTranslation;
-		addingTranslations[inputWord] = inputTranslation;
-		return false;
-	}
-	catch (...)
-	{
-		return true;
-	}
-}
-
-bool SaveDictionaryToFile(const string& path)
-{
-	ofstream out;
-
-	out.open(path, ios::app);
-
-	if (!out.is_open())
-	{
-		return false;
-	}
-
-	for (auto it = addingTranslations.begin(); it != addingTranslations.end(); ++it)
-	{
-		out << it->first << ' ' << it->second << endl;
-	}
-
-	return true;
-}
-
-bool OpenFile(const string& path)
-{
-	ifstream in(path);
-
-	if (!in.is_open())
-	{
-		return false;
-	}
-	
-	string line;
-	while (getline(in, line))
-	{
-		if (!line.empty())
-		{
-			istringstream iss(line);
-			string word, translation;
-
-			iss >> word >> translation;
-			dictionary[word] = translation;
-			reverseTranslation[translation] = word;
-		}
-	}
-	return true;
-}
 
 int main(int argc, char* args[])
 {
 	setlocale(LC_ALL, "");
 	SetConsoleOutputCP(CP_UTF8);
+	map<string, string> dictionary;
+	map<string, string> addingTranslation;
 	
 	if (argc != 2)
 	{
@@ -98,11 +23,7 @@ int main(int argc, char* args[])
 		return 1;
 	}
 
-	if (!OpenFile(args[1]))
-	{
-		cout << "Error to open input file\n";
-		return 1;
-	}
+	OpenDictionaryFile(args[1]);
 
 	string inputWord;
 	bool working = true;
@@ -113,14 +34,14 @@ int main(int argc, char* args[])
 		{
 			break;
 		}
-		if (SearchTranslation(inputWord) != "Undefined")
+		if (SearchTranslation(inputWord, dictionary) != "Undefined")
 		{
-			if (SearchTranslation(inputWord) == "Error")
+			if (SearchTranslation(inputWord, dictionary) == "Error")
 			{
 				cout << "Error to search translation\n";
 				return 1;
 			}
-			cout << "Word: " << inputWord << " Translation: " << SearchTranslation(inputWord) << endl;
+			cout << "Word: " << inputWord << " Translation: " << SearchTranslation(inputWord, dictionary) << endl;
 		}
 		else
 		{
@@ -129,7 +50,7 @@ int main(int argc, char* args[])
 			cin >> inputTranslation;
 			if (!inputTranslation.empty())
 			{
-				if (AddTranslation(inputWord, inputTranslation))
+				if (AddTranslation(inputWord, inputTranslation, addingTranslation))
 				{
 					cout << "Translation " << inputTranslation << " to word " << inputWord << " was successfully saved!";
 				}
@@ -142,7 +63,7 @@ int main(int argc, char* args[])
 		}
 	}
 
-	if (!addingTranslations.empty())
+	if (!addingTranslation.empty())
 	{
 		string action;
 		cout << "Сохранить изменения в словаре?(y/n): ";
@@ -150,7 +71,7 @@ int main(int argc, char* args[])
 
 		if (action == "y")
 		{
-			if (!SaveDictionaryToFile(args[1]))
+			if (!SaveDictionaryToFile(args[1], addingTranslation))
 			{
 				cout << "Error to save dictionary\n";
 				return 1;

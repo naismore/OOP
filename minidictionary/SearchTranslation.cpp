@@ -1,16 +1,15 @@
-#include <string>
-std::string SearchTranslation(const std::string& word)
+#include "SearchTranslation.h"
+
+std::string SearchTranslation(const std::string& word, std::map<std::string, std::string>& dictionary)
 {
-	if (dictionary.count(word) != 0)
+	std::string translation = "Undefined";
+	try
 	{
-		return dictionary[word];
+		translation = dictionary[word];
+		return translation;
 	}
-	else if (reverseTranslation.count(word) != 0)
+	catch (...)
 	{
-		return reverseTranslation[word];
-	}
-	else
-	{
-		return "Undefined";
+		return "Error";
 	}
 }

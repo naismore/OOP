@@ -1,4 +1,5 @@
 #pragma once
-#include <string>
+#include <iostream>
+#include <map>
 
-std::string SearchTranslation(const std::string& word);
+std::string SearchTranslation(const std::string& word, std::map<std::string, std::string> dictionary);
