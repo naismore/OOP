@@ -127,10 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AddTranslation.cpp" />
     <ClCompile Include="minidictionary.cpp" />
+    <ClCompile Include="OpenDictionaryFile.cpp" />
+    <ClCompile Include="SaveDictionaryToFile.cpp" />
     <ClCompile Include="SearchTranslation.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AddTranslation.h" />
+    <ClInclude Include="OpenDictionaryFile.h" />
+    <ClInclude Include="SaveDictionaryToFile.h" />
     <ClInclude Include="SearchTranslation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

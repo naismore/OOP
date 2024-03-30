@@ -127,7 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\minidictionary\AddTranslation.cpp" />
+    <ClCompile Include="..\minidictionary\minidictionary.cpp" />
+    <ClCompile Include="..\minidictionary\OpenDictionaryFile.cpp" />
+    <ClCompile Include="..\minidictionary\SearchTranslation.cpp" />
     <ClCompile Include="minidictionary_tests.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\minidictionary\AddTranslation.h" />
+    <ClInclude Include="..\minidictionary\OpenDictionaryFile.h" />
+    <ClInclude Include="..\minidictionary\SearchTranslation.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
