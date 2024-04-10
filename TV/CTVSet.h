@@ -10,8 +10,8 @@ private:
 public:
 	CTVSet();
 	std::string Info();
-	void TurnOn();
-	void TurnOff();
+	std::string TurnOn();
+	std::string TurnOff();
 	void SelectChannel(int channelNumber);
 	void SelectPreviousChannel();
 
