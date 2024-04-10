@@ -44,11 +44,19 @@ std::string CTVSet::TurnOff()
 
 void CTVSet::SelectChannel(int channelNumber)
 {
-	p_previousChannelNumber = p_channelNumber;
-	p_channelNumber = channelNumber;
+	if (p_condition)
+	{
+		p_previousChannelNumber = p_channelNumber;
+		p_channelNumber = channelNumber;
+	}
+	
 }
 
 void CTVSet::SelectPreviousChannel()
 {
-	std::swap(p_channelNumber, p_previousChannelNumber);
+	if (p_condition)
+	{
+		std::swap(p_channelNumber, p_previousChannelNumber);
+	}
+	
 }
