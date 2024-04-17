@@ -7,9 +7,11 @@ TEST_CASE("")
 {
 	Car car;
 	CHECK(car.IsTurnedOn() == false);
-	CHECK(car.TurnOnEngine() == true);
-	CHECK(car.IsTurnedOn() == true);
+	CHECK(car.TurnOnEngine());
+	CHECK(car.IsTurnedOn());
 	CHECK(car.GetGear() == 0);
 	CHECK(car.GetDirection() == 0);
-	CHECK(car.SetGear(-1) == true);
+	CHECK(car.SetGear(-1));
+	CHECK(car.SetSpeed(10));
+	CHECK(car.GetSpeed() == 10);
 }

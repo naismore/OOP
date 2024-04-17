@@ -8,11 +8,11 @@ public:
 	bool SetGear(int gear);
 	bool SetSpeed(int speed);
 	bool IsTurnedOn();
-	int GetDirection() const;
+	int GetDirection();
 	unsigned int GetSpeed() const;
 	int GetGear() const;
 private:
-	unsigned int p_speed;
+	int p_speed = 0;
 	int p_gear;
 	bool p_engineCondition;
 };

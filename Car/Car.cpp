@@ -4,7 +4,7 @@
 Car::Car()
 {
 	bool p_engineCondition = false;
-	unsigned int p_speed = 0;
+	int p_speed = 0;
 	int p_gear = 0;
 }
 
@@ -178,7 +178,7 @@ bool Car::IsTurnedOn()
 	return p_engineCondition;
 }
 
-int Car::GetDirection() const
+int Car::GetDirection()
 {
 	if (p_gear > 0)
 	{

@@ -2,10 +2,21 @@
 //
 
 #include <iostream>
+#include "Car.h"
+
+using namespace std;
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Car car;
+	if (car.IsTurnedOn())
+	{
+		cout << "true";
+	}
+	else
+	{
+		cout << "false";
+	}
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"

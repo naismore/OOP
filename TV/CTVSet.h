@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
 
+// Почитать про константные методы
+// Coding onventions
+
 class CTVSet
 {
 private:
@@ -10,10 +13,9 @@ private:
 public:
 	CTVSet();
 	std::string Info();
-	std::string TurnOn();
-	std::string TurnOff();
-	void SelectChannel(int channelNumber);
-	void SelectPreviousChannel();
-
+	bool TurnOn();
+	bool TurnOff();
+	bool SelectChannel(int channelNumber);
+	bool SelectPreviousChannel();
 };
 
