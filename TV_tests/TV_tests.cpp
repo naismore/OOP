@@ -6,43 +6,57 @@
 TEST_CASE("Default use TV")
 {
 	CTVSet tv;
-	CHECK(tv.Info() == "TV is off\n");
+	CHECK(tv.Info() == "TV is OFF. Channel: 0");
 	
 	CHECK(tv.TurnOn());
-	CHECK(tv.Info() == "TV is on. Channel: 1\n");
+	CHECK(tv.Info() == "TV is ON. Channel: 1");
 
-	CHECK(tv.SelectChannel(4) == true);
-	CHECK(tv.Info() == "TV is on. Channel: 4\n");
+	CHECK(tv.SelectChannel(4));
+	CHECK(tv.Info() == "TV is ON. Channel: 4");
 
-	// ТЕст на 99 канал
-	CHECK(tv.SelectChannel(100) == false);
-	CHECK(tv.SelectChannel(-12) == false);
+	CHECK(tv.SelectChannel(99));
+	CHECK(!tv.SelectChannel(100));
+	CHECK(!tv.SelectChannel(-12));
 
-	CHECK(tv.SelectPreviousChannel() == true);
-	CHECK(tv.Info() == "TV is on. Channel: 1\n");
+	CHECK(tv.SelectPreviousChannel());
+	CHECK(tv.Info() == "TV is ON. Channel: 4");
 
-	CHECK(tv.TurnOff() == true);
-	CHECK(tv.Info() == "TV is off\n");
+	CHECK(tv.TurnOff());
+	CHECK(tv.Info() == "TV is OFF. Channel: 0");
 
 }
 
-TEST_CASE("Turn on the TV when it's on and turn it off when it's off")
+TEST_CASE("TurnOn")
 {
 	CTVSet tv;
-	CHECK(tv.TurnOff() == true);
-
-	CHECK(tv.TurnOn()); // Булевые значения не сравнивать 
-	
 	CHECK(tv.TurnOn());
+	CHECK(tv.SelectChannel(32));
+	CHECK(tv.Info() == "TV is ON. Channel: 32");
+	CHECK(tv.TurnOff());
+	CHECK(tv.Info() == "TV is OFF. Channel: 0");
+	CHECK(tv.TurnOn());
+	CHECK(tv.Info() == "TV is ON. Channel: 32");
 }
 
-TEST_CASE("Actions on a switched-off TV")
+TEST_CASE("SelectChannel")
 {
 	CTVSet tv;
-	CHECK(tv.TurnOff() == true);
-	CHECK(tv.SelectChannel(4) == false);
-	CHECK(tv.Info() == "TV is off\n");
-	CHECK(tv.SelectPreviousChannel() == false);
-	CHECK(tv.Info() == "TV is off\n");
+	CHECK(tv.Info() == "TV is OFF. Channel: 0");
+	CHECK(!tv.SelectChannel(1));
+	CHECK(tv.TurnOn());
+	CHECK(tv.SelectChannel(99));
+	CHECK(!tv.SelectChannel(-1));
+	CHECK(!tv.SelectChannel(100));
+}
 
+TEST_CASE("SelectPreviousChannel")
+{
+	CTVSet tv;
+	CHECK(!tv.SelectPreviousChannel());
+	CHECK(tv.TurnOn());
+	CHECK(tv.Info() == "TV is ON. Channel: 1");
+	CHECK(tv.SelectChannel(87));
+	CHECK(tv.Info() == "TV is ON. Channel: 87");
+	CHECK(tv.SelectPreviousChannel());
+	CHECK(tv.Info() == "TV is ON. Channel: 1");
 }

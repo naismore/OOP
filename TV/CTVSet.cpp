@@ -2,9 +2,6 @@
 #include <map>
 #include <iostream>
 
-// Info по ТЗ
-// Не нужно везде сувать try catch, если нет смысла
-
 CTVSet::CTVSet()
 {
 	p_condition = false;
@@ -14,52 +11,39 @@ CTVSet::CTVSet()
 
 std::string CTVSet::Info()
 {
-	return (p_condition) ? "TV is on. Channel: " + std::to_string(p_channelNumber) + '\n' : "TV is off\n";
+	std::string condition = (p_condition) ? "ON" : "OFF";
+	return "TV is " + condition + ". Channel: " + std::to_string(p_channelNumber);
 }
 
 bool CTVSet::TurnOn()
 {
-	try
+	if (p_condition)
 	{
-		if (p_condition)
-		{
-			return true;
-		}
-		else
-		{
-			p_condition = true;
-			p_channelNumber = p_previousChannelNumber;
-			return true;
-		}
+		return true;
 	}
-	catch (...)
+	else
 	{
-		return false;
+		p_condition = true;
+		p_channelNumber = p_previousChannelNumber;
+		return true;
 	}
-	
+	return false;
 }
 
 bool CTVSet::TurnOff()
 {
-	try
+	if (!p_condition)
 	{
-		if (!p_condition)
-		{
-			return true;
-		}
-		else
-		{
-			p_condition = false;
-			p_previousChannelNumber = p_channelNumber;
-			p_channelNumber = 0;
-			return true;
-		}
-
+		return true;
 	}
-	catch (...)
+	else
 	{
-		return false;
+		p_condition = false;
+		p_previousChannelNumber = p_channelNumber;
+		p_channelNumber = 0;
+		return true;
 	}
+	return false;
 }
 
 bool CTVSet::SelectChannel(int channelNumber)

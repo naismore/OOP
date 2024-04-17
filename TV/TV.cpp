@@ -1,30 +1,67 @@
 ﻿#include <iostream>
+#include <vector>
+#include <sstream>
 #include "CTVSet.h"
-
 
 using namespace std;
 
 int main()
 {
 	CTVSet tv;
-	cout << tv.Info();
+	string command, word;
+	vector<string> commandWords;
+	vector<string> commands
+	{
+		"TurnOn",
+		"TurnOff",
+		"SelectChannel",
+		"Info"
+	};
 
-	tv.TurnOn();
-	cout << tv.Info(); 
+	cout << "TELEVISION" << endl;
+	while (true)
+	{
+		cout << "Enter the command: ";
 
-	tv.SelectChannel(3);
-	cout << tv.Info();
+		getline(cin, command);
+		istringstream iss(command);
+		
+		commandWords.clear();
 
-	tv.TurnOff();
-	cout << tv.Info();
+		while (iss >> word)
+		{
+			commandWords.push_back(word);
+		}
 
-	tv.TurnOn();
-	cout << tv.Info();
-
-	tv.SelectChannel(5);
-	cout << tv.Info();
-
-	tv.SelectPreviousChannel();
-	cout << tv.Info();
+		switch (find(commands.begin(), commands.end(), commandWords.front()) - commands.begin())
+		{
+		case 0:
+			tv.TurnOn();
+			cout << tv.Info() << endl;
+			break;
+		case 1:
+			if (tv.TurnOff()) 
+			{
+				cout << "The TV was successfully turned off\n";
+			}
+			else
+			{
+				"Error!\n";
+			}
+			break;
+		case 2:
+			if (!commandWords[1].empty())
+			{
+				cout << ((tv.SelectChannel(stoi(commandWords[1]))) ? "The channel was successfully switched to " + commandWords[1] + "\n" : "Error!\n");
+			}
+			break;
+		case 3:
+			cout << tv.Info() << endl;
+			break;
+		default:
+			cout << "Unknown command" << endl;
+			break;
+		}
+	}	
 }
 
