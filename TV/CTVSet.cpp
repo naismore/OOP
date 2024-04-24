@@ -4,6 +4,7 @@
 
 CTVSet::CTVSet()
 {
+	// Поменять название на isturnedon
 	p_condition = false;
 	p_channelNumber = 0;
 	p_previousChannelNumber = 1;
@@ -17,6 +18,7 @@ std::string CTVSet::Info()
 
 bool CTVSet::TurnOn()
 {
+	// Поправить логику, чтение
 	if (p_condition)
 	{
 		return true;
@@ -32,6 +34,7 @@ bool CTVSet::TurnOn()
 
 bool CTVSet::TurnOff()
 {
+	// Поправить логику
 	if (!p_condition)
 	{
 		return true;

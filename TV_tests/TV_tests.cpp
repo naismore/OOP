@@ -3,8 +3,12 @@
 #include "../catch2/catch.hpp"
 #include "../TV/CTVSet.h"
 
+// Прогнать OpenCppCoverage
+// СДелать TEST_case атомарными
+
 TEST_CASE("Default use TV")
 {
+	// Разбить тесты
 	CTVSet tv;
 	CHECK(tv.Info() == "TV is OFF. Channel: 0");
 	
@@ -14,6 +18,7 @@ TEST_CASE("Default use TV")
 	CHECK(tv.SelectChannel(4));
 	CHECK(tv.Info() == "TV is ON. Channel: 4");
 
+	// Добавить проверку на 0 и 1 канал, вынести в отдельный тест
 	CHECK(tv.SelectChannel(99));
 	CHECK(!tv.SelectChannel(100));
 	CHECK(!tv.SelectChannel(-12));

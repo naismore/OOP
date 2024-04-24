@@ -15,6 +15,7 @@ int main()
 		"TurnOn",
 		"TurnOff",
 		"SelectChannel",
+		"SelectPreviousChannel",
 		"Info"
 	};
 
@@ -36,8 +37,14 @@ int main()
 		switch (find(commands.begin(), commands.end(), commandWords.front()) - commands.begin())
 		{
 		case 0:
-			tv.TurnOn();
-			cout << tv.Info() << endl;
+			if (tv.TurnOn()) 
+			{
+				cout << tv.Info() << endl;
+			}
+			else
+			{
+				cout << "Couldn't turn on the TV" << endl;
+			}
 			break;
 		case 1:
 			if (tv.TurnOff()) 
@@ -46,16 +53,25 @@ int main()
 			}
 			else
 			{
-				"Error!\n";
+				"Couldn't turn off the TV\n";
 			}
 			break;
 		case 2:
 			if (!commandWords[1].empty())
 			{
-				cout << ((tv.SelectChannel(stoi(commandWords[1]))) ? "The channel was successfully switched to " + commandWords[1] + "\n" : "Error!\n");
+				cout << ((tv.SelectChannel(stoi(commandWords[1]))) ? "The channel was successfully switched to " + commandWords[1] + "\n" : "The channel could not be switched\n");
 			}
 			break;
 		case 3:
+			if (tv.SelectPreviousChannel())
+			{
+				cout << tv.Info() << endl;
+			}
+			else
+			{
+				cout << "Failed to switch to the previous channel" << endl;
+			}
+		case 4:
 			cout << tv.Info() << endl;
 			break;
 		default:
