@@ -1,8 +1,11 @@
 #pragma once
 #include "CBody.h"
-class CCylinder : CBody
+
+class CCylinder : public CBody
 {
 public:
+	CCylinder(double baseRadius, double height, double density);
+	double GetVolume() override;
 	double GetBaseRadius();
 	double GetHeight();
 private:

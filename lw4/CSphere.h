@@ -5,12 +5,10 @@ class CSphere : public CBody
 {
 public:
 	CSphere(double radius, double density);
-	double GetVolume();
-	double GetDensity();
+	double GetVolume() override;
 	double GetRadius();
-	double GetMass();
 private:
+	void AppendProperties(std::ostream& strm) override;
 	double m_radius;
-	double m_density;
 };
 
