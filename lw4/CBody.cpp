@@ -17,5 +17,5 @@ double CBody::GetMass()
 
 std::string ToString()
 {
-
+	
 }
