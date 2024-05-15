@@ -2,6 +2,7 @@
 #include <iostream>
 class CBody
 {
+public:
 	double GetDensity();
 	double GetVolume();
 	double GetMass();
