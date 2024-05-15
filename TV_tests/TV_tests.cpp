@@ -4,31 +4,15 @@
 #include "../TV/CTVSet.h"
 
 // Прогнать OpenCppCoverage
-// СДелать TEST_case атомарными
 
-TEST_CASE("Default use TV")
+
+TEST_CASE("Проверка граничных значений")
 {
-	// Разбить тесты
 	CTVSet tv;
-	CHECK(tv.Info() == "TV is OFF. Channel: 0");
-	
-	CHECK(tv.TurnOn());
-	CHECK(tv.Info() == "TV is ON. Channel: 1");
-
-	CHECK(tv.SelectChannel(4));
-	CHECK(tv.Info() == "TV is ON. Channel: 4");
-
-	// Добавить проверку на 0 и 1 канал, вынести в отдельный тест
-	CHECK(tv.SelectChannel(99));
+	CHECK(!tv.SelectChannel(0));
 	CHECK(!tv.SelectChannel(100));
-	CHECK(!tv.SelectChannel(-12));
-
-	CHECK(tv.SelectPreviousChannel());
-	CHECK(tv.Info() == "TV is ON. Channel: 4");
-
-	CHECK(tv.TurnOff());
-	CHECK(tv.Info() == "TV is OFF. Channel: 0");
-
+	CHECK(!tv.SelectChannel(-1));
+	CHECK(tv.SelectChannel(99));
 }
 
 TEST_CASE("TurnOn")
@@ -37,10 +21,20 @@ TEST_CASE("TurnOn")
 	CHECK(tv.TurnOn());
 	CHECK(tv.SelectChannel(32));
 	CHECK(tv.Info() == "TV is ON. Channel: 32");
+	CHECK(!tv.TurnOn());
 	CHECK(tv.TurnOff());
 	CHECK(tv.Info() == "TV is OFF. Channel: 0");
 	CHECK(tv.TurnOn());
 	CHECK(tv.Info() == "TV is ON. Channel: 32");
+}
+
+TEST_CASE()
+{
+	CTVSet tv;
+	CHECK(!tv.TurnOff());
+	CHECK(tv.TurnOn());
+	CHECK(tv.TurnOff());
+	CHECK(!tv.TurnOff());
 }
 
 TEST_CASE("SelectChannel")

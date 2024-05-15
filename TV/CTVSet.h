@@ -8,9 +8,9 @@ class CTVSet
 {
 private:
 	// p заменить на m
-	int p_channelNumber;
-	int p_previousChannelNumber;
-	bool p_condition;
+	int m_channelNumber;
+	int m_previousChannelNumber;
+	bool m_isTurnedOn;
 public:
 	CTVSet();
 	std::string Info();
