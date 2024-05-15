@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CBody.cpp" />
+    <ClCompile Include="CSphere.cpp" />
     <ClCompile Include="lw4.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CBody.h" />
+    <ClInclude Include="CSphere.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
