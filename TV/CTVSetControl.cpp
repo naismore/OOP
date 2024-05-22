@@ -17,7 +17,6 @@ CTVSetControl::CTVSetControl(CTVSet& tv, istream& input, ostream& output)
 		}
 		)
 {
-
 }
 
 bool CTVSetControl::HandleCommand()
