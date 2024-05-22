@@ -12,6 +12,9 @@ CTVSetControl::CTVSetControl(CTVSet& tv, istream& input, ostream& output)
 	, m_output(output)
 	, m_actionMap(
 		{
+			{"TurnOn", [this](istream& strm) {
+				return TurnOn(strm);
+			} },
 			{"TurnOff", bind(&CTVSetControl::TurnOff, this, placeholders::_1)},
 			{"TurnOn", bind(&CTVSetControl::TurnOn, this, _1)},
 			//{"SelectChannel", bind(&CTVSetControl::SelectChannel, this, _2)}
