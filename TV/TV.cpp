@@ -2,9 +2,32 @@
 #include <vector>
 #include <sstream>
 #include "CTVSet.h"
+#include "CTVSetControl.h"
 
 using namespace std;
 
+const std::string COMMAND_HELPER = "TurnOn";
+
+int main()
+{
+	CTVSet tv;
+	CTVSetControl tvController(tv, std::cin, std::cout);
+	
+	cout << COMMAND_HELPER << endl;
+	while (!cin.eof() && !cin.fail())
+	{
+		std::cout << "> ";
+		if (!tvController.HandleCommand())
+		{
+			std::cout << "Unknown command!" << std::endl;
+			std::cout << COMMAND_HELPER << std::endl;
+		}
+	}
+	return 0;
+}
+
+
+/*
 int main()
 {
 	CTVSet tv;
@@ -81,3 +104,4 @@ int main()
 	}	
 }
 
+*/

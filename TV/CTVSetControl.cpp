@@ -13,7 +13,8 @@ CTVSetControl::CTVSetControl(CTVSet& tv, istream& input, ostream& output)
 	, m_actionMap(
 		{
 			{"TurnOff", bind(&CTVSetControl::TurnOff, this, placeholders::_1)},
-			{"TurnOn", bind(&CTVSetControl::TurnOff, this, _1)}
+			{"TurnOn", bind(&CTVSetControl::TurnOn, this, _1)},
+			//{"SelectChannel", bind(&CTVSetControl::SelectChannel, this, _2)}
 		}
 		)
 {
@@ -42,6 +43,11 @@ bool CTVSetControl::TurnOn(std::istream& /*args*/)
 	m_tv.TurnOn();
 	m_output << "TV is turned on" << endl;
 	return true;
+}
+
+bool CTVSetControl::SelectChannel(int channel)
+{
+	return false;
 }
 
 bool CTVSetControl::TurnOff(std::istream& /*args*/)

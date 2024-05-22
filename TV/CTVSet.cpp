@@ -15,59 +15,37 @@ std::string CTVSet::Info()
 	return "TV is " + condition + ". Channel: " + std::to_string(m_channelNumber);
 }
 
-bool CTVSet::TurnOn()
+void CTVSet::TurnOn()
 {
-	if (!m_isTurnedOn)
-	{
-		m_isTurnedOn = true;
-		m_channelNumber = m_previousChannelNumber;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+
+	m_isTurnedOn = true;
+	m_channelNumber = m_previousChannelNumber;
+
 }
 
-bool CTVSet::TurnOff()
+void CTVSet::TurnOff()
 {
-	if (m_isTurnedOn)
-	{
-		m_isTurnedOn = false;
-		m_previousChannelNumber = m_channelNumber;
-		m_channelNumber = 0;
-		return true;
-	}
-	else
-	{
-		return false;
-	}
+
+	m_isTurnedOn = false;
+	m_previousChannelNumber = m_channelNumber;
+	m_channelNumber = 0;
+
 }
 
-bool CTVSet::SelectChannel(int channelNumber)
+void CTVSet::SelectChannel(int channelNumber)
 {
 	if (m_isTurnedOn && channelNumber > 0 && channelNumber <= 99)
 	{
 		m_previousChannelNumber = m_channelNumber;
 		m_channelNumber = channelNumber;
-		return true;
 	}
-	else
-	{
-		return false;
-	}
-	
 }
 
-bool CTVSet::SelectPreviousChannel()
+void CTVSet::SelectPreviousChannel()
 {
 	if (m_isTurnedOn)
 	{
 		std::swap(m_channelNumber, m_previousChannelNumber);
-		return true;
 	}
-	else
-	{
-		return false;
-	}
+
 }
