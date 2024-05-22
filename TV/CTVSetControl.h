@@ -2,16 +2,15 @@
 #include <istream>
 #include <functional>
 #include <map>
-
-class CTVSet;
+#include "CTVSet.h"
 
 class CTVSetControl
 {
 public:
 	CTVSetControl(CTVSet& tv, std::istream& input, std::ostream& output);
 	bool HandleCommand();
-
 private:
+	bool SelectChannel(int channel);
 	bool TurnOff(std::istream& args);
 	bool TurnOn(std::istream& args);
 	bool Info(std::istream& args);
