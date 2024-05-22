@@ -7,10 +7,12 @@ CBodyControl::CBodyControl(std::istream& input, std::ostream& output, std::vecto
 	: m_input(input)
 	, m_output(output)
 	, m_bodiesVector(bodiesVector)
-	, m_actionMap({ { "Info", bind(&CBodyControl::InfoAboutAllBodies, this, std::placeholders::_1) },
+	, m_actionMap({
+		{ "Info", bind(&CBodyControl::InfoAboutAllBodies, this, std::placeholders::_1) },
 		{ "AddBody", bind(&CBodyControl::AddBody, this, std::placeholders::_1) },
-		{ "GetBodyWithBiggestMass", bind(&CBodyControl::GetBodyWithBiggestMass, this) },
-		{ "GetLightestBodyInWater", bind(&CBodyControl::GetLightestBodyInWater, this) }, })
+		{ "GetBodyWithBiggestMass", std::bind(&CBodyControl::GetBodyWithBiggestMass, this) },
+		{ "GetLightestBodyInWater", std::bind(&CBodyControl::GetLightestBodyInWater, this) },
+		})
 {
 }
 
@@ -35,6 +37,7 @@ bool CBodyControl::AddBody(std::istream& args)
 {
 	return false;
 }
+
 
 bool CBodyControl::GetBodyWithBiggestMass(std::istream& args)
 {

@@ -128,10 +128,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="CTVSet.cpp" />
+    <ClCompile Include="CTVSetControl.cpp" />
     <ClCompile Include="TV.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTVSet.h" />
+    <ClInclude Include="CTVSetControl.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

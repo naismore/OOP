@@ -21,9 +21,15 @@
     <ClCompile Include="CTVSet.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="CTVSetControl.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTVSet.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="CTVSetControl.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
