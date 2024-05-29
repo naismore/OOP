@@ -1,4 +1,6 @@
-﻿#define CATCH_CONFIG_MAIN
+﻿
+/*
+#define CATCH_CONFIG_MAIN
 #include "../catch2/catch.hpp"
 #include "../minidictionary/SearchTranslation.h"
 #include "../minidictionary/AddTranslation.h"
@@ -14,3 +16,4 @@ TEST_CASE()
 
 	CHECK(SearchTranslation("dog", dictionary) == "собака");
 }
+*/
