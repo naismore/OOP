@@ -1,19 +1,26 @@
-#pragma once
-class Car
-{
+#ifndef CAR_H
+#define CAR_H
+
+#include <string>
+
+class Car {
 public:
-	Car();
-	bool TurnOnEngine(); // Turning on the engine. Returned true if engine was turned on successful(or already is on)
-	bool TurnOffEngine(); // Turning off the engine. 
-	bool SetGear(int gear);
-	bool SetSpeed(int speed);
-	bool IsTurnedOn();
-	int GetDirection();
-	unsigned int GetSpeed() const;
-	int GetGear() const;
+    Car();
+    bool TurnOnEngine();
+    bool TurnOffEngine();
+    bool SetGear(int gear);
+    bool SetSpeed(int speed);
+    bool IsTurnedOn() const;
+    std::string GetDirection() const;
+    int GetSpeed() const;
+    int GetGear() const;
+
 private:
-	int p_speed = 0;
-	int p_gear;
-	bool p_engineCondition;
+    bool engineOn_;
+    int gear_;
+    int speed_;
+    int GetMinSpeed(int gear) const;
+    int GetMaxSpeed(int gear) const;
 };
 
+#endif // CAR_H

@@ -15,18 +15,21 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\Car\Car.cpp">
+    <ClCompile Include="HTTP.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Car_tests.cpp">
+    <ClCompile Include="CUrlParsingError.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="CHttpUrl.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Car\Car.h">
+    <ClInclude Include="CUrlParsingError.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="..\catch2\catch.hpp">
+    <ClInclude Include="CHttpUrl.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

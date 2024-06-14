@@ -1,198 +1,100 @@
-﻿#include <iostream>
-#include "Car.h"
+﻿#include "Car.h"
+#include <stdexcept>
 
-Car::Car()
-{
-	bool p_engineCondition = false;
-	int p_speed = 0;
-	int p_gear = 0;
+Car::Car() : engineOn_(false), gear_(0), speed_(0) {}
+
+bool Car::TurnOnEngine() {
+    if (!engineOn_) {
+        engineOn_ = true;
+        gear_ = 0;
+        speed_ = 0;
+        return true;
+    }
+    return false;
 }
 
-bool Car::TurnOnEngine()
-{
-	try
-	{
-		if (p_engineCondition)
-		{
-			return true;
-		}
-		else if (!p_engineCondition)
-		{
-			p_engineCondition = true;
-			return true;
-		}
-	}
-	catch (...)
-	{
-		return false;
-	}	
+bool Car::TurnOffEngine() {
+    if (engineOn_ && gear_ == 0 && speed_ == 0) {
+        engineOn_ = false;
+        return true;
+    }
+    return false;
 }
 
-bool Car::TurnOffEngine()
-{
-	try
-	{
-		if (p_engineCondition && p_gear == 0 && p_speed == 0)
-		{
-			p_engineCondition = false;
-			return true;
-		}
-		else if(!p_engineCondition)
-		{
-			return true;
-		}
-		else
-		{
-			return false;
-		}
-	}
-	catch (...)
-	{
-		return false;
-	}	
+bool Car::SetGear(int gear) {
+    if (!engineOn_) {
+        throw std::runtime_error("Engine is off");
+    }
+    if (gear < -1 || gear > 5) {
+        throw std::invalid_argument("Invalid gear");
+    }
+    if (gear == -1 && speed_ != 0) {
+        throw std::runtime_error("Cannot switch to reverse gear while moving");
+    }
+    if (gear == 0 && speed_ != 0) {
+        throw std::runtime_error("Cannot switch to neutral gear while moving");
+    }
+    if (gear > 0 && speed_ < GetMinSpeed(gear)) {
+        throw std::runtime_error("Cannot switch to gear while speed is too low");
+    }
+    if (gear > 0 && speed_ > GetMaxSpeed(gear)) {
+        throw std::runtime_error("Cannot switch to gear while speed is too high");
+    }
+    gear_ = gear;
+    return true;
 }
 
-bool Car::SetGear(int gear)
-{
-	if (p_engineCondition)
-	{
-		switch (gear)
-		{
-		case -1:
-			if (p_speed == 0)
-			{
-				p_gear = gear;
-				return true;
-				break;
-			}
-		case 0:
-			p_gear = gear;
-			return true;
-			break;
-		case 1:
-			if (p_speed == 0)
-			{
-				p_gear = gear;
-				return true;
-				break;
-			}
-		case 2:
-			if (p_speed >= 20 && p_speed <= 50 && p_gear != -1)
-			{
-				p_gear = gear;
-				return true;
-				break;
-			}
-		case 3:
-			if (p_speed >= 30 && p_speed <= 60)
-			{
-				p_gear = gear;
-				return true;
-				break;
-			}
-		case 4:
-			if (p_speed >= 40 && p_speed <= 90)
-			{
-				p_gear = gear;
-				return true;
-				break;
-			}
-		case 5:
-			if (p_speed >= 50 && p_speed <= 150)
-			{
-				p_gear = gear;
-				return true;
-				break;
-			}
-		default:
-			return false;
-		}
-	}
-	return false;
+bool Car::SetSpeed(int speed) {
+    if (!engineOn_) {
+        throw std::runtime_error("Engine is off");
+    }
+    if (gear_ == 0 && speed != 0) {
+        throw std::runtime_error("Cannot change speed on neutral gear");
+    }
+    if (gear_ > 0 && (speed < GetMinSpeed(gear_) || speed > GetMaxSpeed(gear_))) {
+        throw std::runtime_error("Cannot change speed to specified value");
+    }
+    speed_ = speed;
+    return true;
 }
 
-bool Car::SetSpeed(int speed)
-{
-	if (p_engineCondition)
-	{
-		switch (p_gear)
-		{
-		case -1:
-			if (speed >= 0 && speed <= 20)
-			{
-				p_speed = speed;
-				return true;
-				break;
-			}
-		case 0:
-			if (speed < p_speed)
-			{
-				p_speed = speed;
-				return true;
-				break;
-			}
-		case 1:
-			if (speed >= 0 && speed <= 30)
-			{
-				p_speed = speed;
-				return true;
-				break;		
-			}
-		case 2:
-			if (speed >= 20 && speed <= 5)
-			{
-				p_speed = speed;
-				return true;
-				break;
-			}
-		case 3:
-			if (speed >= 30 && speed <= 60)
-			{
-				p_speed = speed;
-				return true;
-				break;
-			}
-		case 4:
-			if (speed >= 40 && speed <= 90)
-			{
-				p_speed = speed;
-				return true;
-				break;
-			}
-		case 5:
-			if (speed >= 50 && speed <= 150)
-			{
-				p_speed = speed;
-				return true;
-				break;
-			}
-		default:
-			return false;
-		}
-	}
-	return false;
+bool Car::IsTurnedOn() const { return engineOn_; }
+std::string Car::GetDirection() const {
+    if (speed_ > 0) {
+        return "forward";
+    }
+    else if (speed_ < 0) {
+        return "backward";
+    }
+    else {
+        return "standing still";
+    }
+}
+int Car::GetSpeed() const { return std::abs(speed_); }
+int Car::GetGear() const { return gear_; }
+
+int Car::GetMinSpeed(int gear) const {
+    switch (gear) {
+    case -1: return 0;
+    case 0: return 0;
+    case 1: return 0;
+    case 2: return 20;
+    case 3: return 30;
+    case 4: return 40;
+    case 5: return 50;
+    default: throw std::runtime_error("Invalid gear");
+    }
 }
 
-bool Car::IsTurnedOn() 
-{
-	return p_engineCondition;
-}
-
-int Car::GetDirection()
-{
-	if (p_gear > 0)
-	{
-		return 1;
-	}
-	return p_gear;
-}
-
-unsigned int Car::GetSpeed() const
-{
-	return p_speed;
-}
-
-int Car::GetGear() const
-{
-	return p_gear;
+int Car::GetMaxSpeed(int gear) const {
+    switch (gear) {
+    case -1: return 20;
+    case 0: return INT_MAX;
+    case 1: return 30;
+    case 2: return 50;
+    case 3: return 60;
+    case 4: return 90;
+    case 5: return 150;
+    default: throw std::runtime_error("Invalid gear");
+    }
 }
