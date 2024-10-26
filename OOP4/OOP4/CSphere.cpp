@@ -1,25 +1,18 @@
 #include "CSphere.h"
-#include <string>
 
-CSphere::CSphere(const double radius) : m_radius(radius) {};
-
-double CSphere::GetDensity() const
-{
-}
-
-double CSphere::GetMass() const
-{
-}
+CSphere::CSphere(double density, double radius) : CBody("Sphere", density), m_radius(radius) {};
 
 double CSphere::GetVolume() const
 {
+    return (pow(m_radius, 3) * M_PI) * 4 / 3;
 }
 
 double CSphere::GetRadius() const
 {
+    return m_radius;
 }
 
-std::string CSphere::ToString() const
+void CSphere::AppendProperties(std::ostream &strm) const
 {
-    return "Object: Sphere\nRadius: ";
+    strm << "\tradius = " << GetRadius() << std::endl;
 }

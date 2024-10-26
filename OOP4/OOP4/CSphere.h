@@ -1,15 +1,13 @@
 #pragma once
 #include "CBody.h"
-class CSphere : public CBody
+class CSphere final : public CBody
 {
 public:
-    CSphere(const double radius);
+    CSphere(double density, double radius);
     double GetVolume() const override;
-    double GetMass() const override;
-    double GetDensity() const override;
     double GetRadius() const;
-    std::string ToString() const override;
 
 private:
+    void AppendProperties(std::ostream &strm) const override;
     double m_radius;
 };
