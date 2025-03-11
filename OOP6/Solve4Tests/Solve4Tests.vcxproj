@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{193b3728-fd43-4c9d-874b-dce1e4744088}</ProjectGuid>
-    <RootNamespace>OOP5</RootNamespace>
+    <ProjectGuid>{ba4c97c5-53c7-4929-9d54-0ac2f8d8b33e}</ProjectGuid>
+    <RootNamespace>Solve4Tests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -104,7 +104,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Mikhail\Documents\OOP\catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,17 +127,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CrossProduct.cpp" />
-    <ClCompile Include="CVector3D.cpp" />
-    <ClCompile Include="DotProduct.cpp" />
-    <ClCompile Include="Normalize.cpp" />
-    <ClCompile Include="OOP5.cpp" />
+    <ClCompile Include="..\OOP6\CHttpUrl.cpp" />
+    <ClCompile Include="Solve4Tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CrossProduct.h" />
-    <ClInclude Include="CVector3D.h" />
-    <ClInclude Include="DotProduct.h" />
-    <ClInclude Include="Normalize.h" />
+    <ProjectReference Include="..\OOP6\OOP6.vcxproj">
+      <Project>{f89cfeeb-e24a-4f1d-a739-62bedaf912ef}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\OOP6\CHttpUrl.h" />
+    <ClInclude Include="..\OOP6\EquationSolver.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

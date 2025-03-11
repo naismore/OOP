@@ -47,7 +47,7 @@ CVector3D CVector3D::operator-(CVector3D& other) const
 
 std::ostream& operator<<(std::ostream& os, const CVector3D& vec)
 {
-	os << "(" << vec.x << ", " << vec.y << ", " << vec.z;
+	os << "(" << vec.x << ", " << vec.y << ", " << vec.z << ')';
 	return os;
 }
 
@@ -72,7 +72,7 @@ CVector3D CVector3D::operator*(double scalar) const
 	return CVector3D(x * scalar, y * scalar, z * scalar);
 }
 
-CVector3D operator*(double scalar, CVector3D& vec)
+CVector3D operator*(double scalar, const CVector3D& vec)
 {
 	return vec * scalar;
 }
@@ -85,6 +85,19 @@ CVector3D CVector3D::operator/(double scalar) const
 	}
 	return CVector3D(x / scalar, y / scalar, z / scalar);
 }
+
+CVector3D& CVector3D::operator-=(const CVector3D& other)
+{
+	double lengthOther = other.GetLength();
+	if (lengthOther > 0)
+	{
+		this->x -= lengthOther * (other.x / lengthOther);
+		this->y -= lengthOther * (other.y / lengthOther);
+		this->z -= lengthOther * (other.z / lengthOther);
+	}
+	return *this;
+}
+
 
 CVector3D& CVector3D::operator*=(double scalar)
 {

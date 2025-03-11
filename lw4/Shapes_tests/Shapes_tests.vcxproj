@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>17.0</VCProjectVersion>
+    <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{193b3728-fd43-4c9d-874b-dce1e4744088}</ProjectGuid>
-    <RootNamespace>OOP5</RootNamespace>
+    <ProjectGuid>{9669b713-3a9d-4101-a197-07fcd1a852bf}</ProjectGuid>
+    <RootNamespace>Shapestests</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,12 +70,25 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +103,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,7 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Mikhail\Documents\OOP\catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -119,6 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,17 +143,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CrossProduct.cpp" />
-    <ClCompile Include="CVector3D.cpp" />
-    <ClCompile Include="DotProduct.cpp" />
-    <ClCompile Include="Normalize.cpp" />
-    <ClCompile Include="OOP5.cpp" />
+    <ClCompile Include="..\Shapes\CCircle.cpp" />
+    <ClCompile Include="..\Shapes\CLineSegment.cpp" />
+    <ClCompile Include="..\Shapes\CRectangle.cpp" />
+    <ClCompile Include="..\Shapes\CShapeController.cpp" />
+    <ClCompile Include="..\Shapes\CTriangle.cpp" />
+    <ClCompile Include="Shapes_tests.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CrossProduct.h" />
-    <ClInclude Include="CVector3D.h" />
-    <ClInclude Include="DotProduct.h" />
-    <ClInclude Include="Normalize.h" />
+    <ClInclude Include="..\Shapes\CCircle.h" />
+    <ClInclude Include="..\Shapes\CLineSegment.h" />
+    <ClInclude Include="..\Shapes\CPoint.h" />
+    <ClInclude Include="..\Shapes\CRectangle.h" />
+    <ClInclude Include="..\Shapes\CShapeController.h" />
+    <ClInclude Include="..\Shapes\CTriangle.h" />
+    <ClInclude Include="..\Shapes\Errors.h" />
+    <ClInclude Include="..\Shapes\IShape.h" />
+    <ClInclude Include="..\Shapes\ISolidShape.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

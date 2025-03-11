@@ -19,10 +19,10 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <VCProjectVersion>17.0</VCProjectVersion>
+    <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{193b3728-fd43-4c9d-874b-dce1e4744088}</ProjectGuid>
-    <RootNamespace>OOP5</RootNamespace>
+    <ProjectGuid>{62069700-d4a9-4d4d-82e4-babc00f9f1ec}</ProjectGuid>
+    <RootNamespace>Shapes</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -70,6 +70,18 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -104,7 +116,6 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\Mikhail\Documents\OOP\catch2;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,17 +139,22 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CrossProduct.cpp" />
-    <ClCompile Include="CVector3D.cpp" />
-    <ClCompile Include="DotProduct.cpp" />
-    <ClCompile Include="Normalize.cpp" />
-    <ClCompile Include="OOP5.cpp" />
+    <ClCompile Include="CCircle.cpp" />
+    <ClCompile Include="CLineSegment.cpp" />
+    <ClCompile Include="CRectangle.cpp" />
+    <ClCompile Include="CShapeController.cpp" />
+    <ClCompile Include="CTriangle.cpp" />
+    <ClCompile Include="Shapes.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CrossProduct.h" />
-    <ClInclude Include="CVector3D.h" />
-    <ClInclude Include="DotProduct.h" />
-    <ClInclude Include="Normalize.h" />
+    <ClInclude Include="CCircle.h" />
+    <ClInclude Include="CLineSegment.h" />
+    <ClInclude Include="CPoint.h" />
+    <ClInclude Include="CRectangle.h" />
+    <ClInclude Include="CShapeController.h" />
+    <ClInclude Include="CTriangle.h" />
+    <ClInclude Include="Errors.h" />
+    <ClInclude Include="IShape.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
